@@ -12,18 +12,18 @@ class Speciality(models.Model):
 class Doctor(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
-    speciality = models.ForeignKey(Speciality, on_delete=models.CASCADE)
+    speciality = models.ForeignKey(Speciality, related_name='doctors', on_delete=models.CASCADE)
 
-    TIME_AVAILABLE_CHOICES = [
-        ('9am', '9am - 10am'),
-        ('10am', '10am - 11am'),
-        ('11am', '11am - 12pm'),
-        ('12am', '12pm - 1pm'),
-        ('1pm', '1pm - 2pm'),
-        ('2pm', '2pm - 3pm'),
-        ('3pm', '3pm - 4pm'),
-    ]
-    time_available = models.CharField(max_length=4, choices=TIME_AVAILABLE_CHOICES)
+    # TIME_AVAILABLE_CHOICES = [
+    #     ('9am', '9am - 10am'),
+    #     ('10am', '10am - 11am'),
+    #     ('11am', '11am - 12pm'),
+    #     ('12am', '12pm - 1pm'),
+    #     ('1pm', '1pm - 2pm'),
+    #     ('2pm', '2pm - 3pm'),
+    #     ('3pm', '3pm - 4pm'),
+    # ]
+    # time_available = models.CharField(max_length=4, choices=TIME_AVAILABLE_CHOICES)
     
     def __str__(self):
         return self.name
