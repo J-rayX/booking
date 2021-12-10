@@ -12,4 +12,9 @@ class SpecialityList(generics.ListCreateAPIView):
 class DoctorList(generics.ListCreateAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
-    name = 'doctors-list'
+    name = 'doctor-list'
+
+class AppointmentList(generics.ListCreateAPIView):
+    queryset = Appointment.objects.all()
+    serializer_class = AppointmentSerializer
+    name = 'appointment-list'
