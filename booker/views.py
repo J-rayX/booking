@@ -16,5 +16,14 @@ class DoctorList(generics.ListCreateAPIView):
 
 class AppointmentList(generics.ListCreateAPIView):
     queryset = Appointment.objects.all()
+    # queryset = Appointment.objects.values( 'schedule_date', 'doctor', 'time_selected').distinct()
+    # queryset = Appointment.objects.all().distinct()
     serializer_class = AppointmentSerializer
     name = 'appointment-list'
+
+    # for instance in Appointment.objects.all():
+    #             if instance.schedule_date == schedule_date:
+    #                 if instance.time_selected == time_selected:
+    #                     raise ValidationError('Period already Booked')
+                            
+                            

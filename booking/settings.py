@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 ]
 
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8080',  # for localhost Vue app
+    'http://localhost:8080', 'https://booqueen.netlify.app'  # for localhost Vue app
 )
 
 MIDDLEWARE = [

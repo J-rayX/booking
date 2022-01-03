@@ -44,3 +44,7 @@ class Appointment(models.Model):
     #     ('3pm', '3pm - 4pm'),
     # ]
     # time_selected = models.CharField(max_length=2, choices=TIME_AVAILABLE_CHOICES)
+
+
+    class Meta:
+        unique_together = ('doctor', 'schedule_date', 'time_selected',)
