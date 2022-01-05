@@ -29,13 +29,13 @@ class AppointmentSerializer(serializers.ModelSerializer):
         model = Appointment
         fields = ['id', 'schedule_date', 'doctor', 'time_selected']
 
-    def send_dynamic_mail(self, doctor):
+    def send_dynamic_mail(self, doctor, schedule_date, time_selected):
         from_email = 'jkaylight@gmail.com'
         doctor_details = Doctor.objects.get(name=doctor)
         to_email = doctor_details.email
         send_mail(
-            'New Files have been Uploaded',
-            'New files have been uploaded.',
+            'New consultation booked',
+            'An appointment has been scheduled for {} on {}'.format(schedule_date, time_selected),
             from_email,
             [to_email],
             fail_silently=False,
@@ -45,14 +45,11 @@ class AppointmentSerializer(serializers.ModelSerializer):
 
 
     def create(self, validated_data):
-        # doctor = super().create(validated_data)
-
         appointment = Appointment.objects.create(**validated_data)
 
         doctor = validated_data.get('doctor')  
         schedule_date = validated_data.get('schedule_date')
         time_selected = validated_data.get('time_selected')
-        # instance.save()
 
-        self.send_dynamic_mail(doctor)
+        self.send_dynamic_mail(doctor, schedule_date, time_selected)
         return appointment
