@@ -1,7 +1,13 @@
 from django.shortcuts import render
-from rest_framework import generics # added new line
+
+from rest_framework import generics, serializers # added new line
 from .models import Doctor, Speciality, Appointment # added new line
 from .serializers import SpecialitySerializer, DoctorSerializer, AppointmentSerializer # added new line
+
+# import requests
+import json
+from django.core.mail import send_mail
+
 
 # Create your views here.
 class SpecialityList(generics.ListCreateAPIView):
@@ -20,10 +26,4 @@ class AppointmentList(generics.ListCreateAPIView):
     # queryset = Appointment.objects.all().distinct()
     serializer_class = AppointmentSerializer
     name = 'appointment-list'
-
-    # for instance in Appointment.objects.all():
-    #             if instance.schedule_date == schedule_date:
-    #                 if instance.time_selected == time_selected:
-    #                     raise ValidationError('Period already Booked')
-                            
-                            
+    
