@@ -1,3 +1,3 @@
-web: gunicorn booking.booking.wsgi:application --log-file - --log-level debug
+web: gunicorn booking.wsgi:application
 python manage.py collectstatic --noinput
-manage.py migrate
+python manage.py migrate
