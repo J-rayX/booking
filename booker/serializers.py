@@ -13,18 +13,14 @@ class DoctorSerializer(serializers.ModelSerializer):
 
 
 class SpecialitySerializer(serializers.ModelSerializer):
-    # doctors = serializers.PrimaryKeyRelatedField(many=True, read_only=True) 
     doctors = DoctorSerializer(many=True)
     class Meta:
         model = Speciality
-        # fields = ['id', 'title', 'doctors']
         fields = '__all__'
-        # multiplechoices = serializers.MultipleChoiceField(choices = TIME_AVAILABLE_CHOICES)
 
 
 
 class AppointmentSerializer(serializers.ModelSerializer):
-    # serializer = self.serializer_class(data=request.data)
     class Meta:
         model = Appointment
         fields = ['id', 'schedule_date', 'doctor', 'time_selected']
@@ -40,9 +36,6 @@ class AppointmentSerializer(serializers.ModelSerializer):
             [to_email],
             fail_silently=False,
         )
-
-            
-
 
     def create(self, validated_data):
         appointment = Appointment.objects.create(**validated_data)
