@@ -10,9 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-# import Heroku module
-import django_heroku # used at the bottom of settings.py file
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -46,7 +43,7 @@ INSTALLED_APPS = [
 ]
 
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8080', 'https://booqueen.netlify.app'  # for localhost Vue app
+    'http://localhost:8080', # the localhost Vue app URL
 )
 
 MIDDLEWARE = [
@@ -134,11 +131,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-# Heroku settings
-django_heroku.settings(locals())
-
 
 
 # EMAIL SETTINGS

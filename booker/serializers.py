@@ -26,7 +26,7 @@ class AppointmentSerializer(serializers.ModelSerializer):
         fields = ['id', 'schedule_date', 'doctor', 'time_selected']
 
     def send_dynamic_mail(self, doctor, schedule_date, time_selected):
-        from_email = 'jkaylight@gmail.com'
+        from_email = 'gonzalo@gmail.com'
         doctor_details = Doctor.objects.get(name=doctor)
         to_email = doctor_details.email
         send_mail(
